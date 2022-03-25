@@ -38,7 +38,7 @@ class AuthorProductionView extends StatelessWidget {
 
   Widget _authorProduction() {
     final List<SameUserBookModel> threeProduction =
-        bookDetail.SameUserBooks.sublist(0, 3);
+        bookDetail.SameUserBooks.sublist(0, 3 < bookDetail.SameUserBooks.length ? 3 : bookDetail.SameUserBooks.length);
     return ListView.builder(
         physics: const NeverScrollableScrollPhysics(),
         shrinkWrap: true,

@@ -21,7 +21,7 @@ class _SameCategoryBookViewState extends State<SameCategoryBookView> {
   @override
   void initState() {
     super.initState();
-    _list = widget.bookDetail.SameCategoryBooks.sublist(start, end);
+    _list = widget.bookDetail.SameCategoryBooks.sublist(start, end < widget.bookDetail.SameCategoryBooks.length ? end : widget.bookDetail.SameCategoryBooks.length);
   }
 
   _changeNext() {
