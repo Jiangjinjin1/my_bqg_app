@@ -1,4 +1,3 @@
-import 'package:my_bqg_app/models/book_shelf_item_model.dart';
 import 'package:my_bqg_app/public.dart';
 
 class ApiRequest {
@@ -27,6 +26,18 @@ class ApiRequest {
     var data = response['data'];
     return data;
 
+  }
+
+  // 获取书籍详情
+  static Future getBookDetails(int id) async {
+    int tmId = int.parse(id.toString().substring(0, 3)) + 1;
+    String path = '${HostConfig.infosxs_api_host}/BookFiles/Html/${tmId.toString()}/$id/info.html';
+    final response = await Http.get(
+      path,
+    );
+    dynamic data = response['data'];
+    BookDetailModel result = BookDetailModel.fromJson(data);
+    return result;
   }
 
 

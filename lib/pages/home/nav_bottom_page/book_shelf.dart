@@ -3,11 +3,9 @@ import 'dart:ui';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
-import 'package:my_bqg_app/models/book_shelf_item_model.dart';
 import 'package:my_bqg_app/pages/home/component/book_shelf_list.dart';
 import 'package:my_bqg_app/pages/home/component/bootom_sheet_modal.dart';
 import 'package:my_bqg_app/public.dart';
-import 'package:my_bqg_app/services/api_request.dart';
 
 class BookShelf extends StatefulWidget {
   const BookShelf({Key? key}) : super(key: key);
@@ -184,12 +182,19 @@ class _BookShelfState extends State<BookShelf>
 
   // 选择书籍的回调
   _selectListCallback(BookShelfItemModel item) {
-    if (_selectBookList.contains(item)) {
-      _selectBookList.remove(item);
-    } else {
-      _selectBookList.add(item);
+    // 整理书架的点击处理
+    if (_showModifyModle) {
+      if (_selectBookList.contains(item)) {
+        _selectBookList.remove(item);
+      } else {
+        _selectBookList.add(item);
+      }
+      this.setState(() {});
+      return;
     }
-    this.setState(() {});
+    // 打开书籍的点击处理
+    Navigator.pushNamed(context, '/book_reader_page', arguments: {'Id': item.Id});
+
   }
 
   // 长按书籍

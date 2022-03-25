@@ -1,7 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:my_bqg_app/models/book_shelf_item_model.dart';
 import 'package:my_bqg_app/public.dart';
 
 typedef MapString<T> = Map<T, T>;

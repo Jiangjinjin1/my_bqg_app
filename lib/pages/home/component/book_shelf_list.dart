@@ -1,6 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:my_bqg_app/models/book_shelf_item_model.dart';
 import 'package:my_bqg_app/pages/home/component/book_grid_view.dart';
 import 'package:my_bqg_app/pages/home/component/book_tile_view.dart';
 import 'package:my_bqg_app/public.dart';

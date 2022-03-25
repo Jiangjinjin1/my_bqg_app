@@ -1,5 +1,6 @@
 import 'dart:math';
 
+import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 
 /// 阅读数转换 比如10w
@@ -71,4 +72,13 @@ double toRpx({double size = 0, double width = 750}) {
 String networkImageToDefault(String? src) {
   return src ??
       'https://pic1.zhimg.com/80/v2-6afa72220d29f045c15217aa6b275808_720w.jpg?source=1940ef5c';
+}
+
+// 评分星星
+String getVoteScore(int index, double score) {
+  double curScore = score / 2;
+  if (curScore > index) return 'assets/images/bqg_imgs/2.0x/EImage_icon18.png';
+  if (curScore.ceil() >= index) return 'assets/images/bqg_imgs/2.0x/EImage_icon19.png';
+  if (curScore < index) return 'assets/images/bqg_imgs/2.0x/EImage_icon20.png';
+  return 'assets/images/bqg_imgs/2.0x/EImage_icon18.png';
 }

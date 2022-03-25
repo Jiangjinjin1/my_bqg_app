@@ -19,3 +19,13 @@ export 'package:my_bqg_app/const/event_message.dart';
 
 // 配置工具
 export 'package:my_bqg_app/config/host_config.dart';
+
+// model模块
+export 'package:my_bqg_app/models/book_detail_model.dart';
+export 'package:my_bqg_app/models/book_shelf_model.dart';
+
+// api业务请求
+export 'package:my_bqg_app/services/api_request.dart';
+
+// 三方库
+export 'package:flutter_easyloading/flutter_easyloading.dart';
