@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
+import 'package:my_bqg_app/public.dart';
 import 'HttpConfig.dart';
 import 'HttpInterceptor.dart';
-import 'dart:convert' as convert;
 
 // http请求类
 class HttpRequest {
@@ -91,13 +91,19 @@ class HttpRequest {
   }) async {
     Options requestOptions = setAuthorizationHeader(options ?? Options());
 
-    Response response = await dio.get(
-      path,
-      queryParameters: params,
-      options: requestOptions,
-      cancelToken: cancelToken ?? _cancelToken,
-    );
-    return convert.jsonDecode(response.data);
+    try {
+      Response response = await dio.get(
+        path,
+        queryParameters: params,
+        options: requestOptions,
+        cancelToken: cancelToken ?? _cancelToken,
+      );
+
+      return StringUtil.handleStringJson(response.data);
+    } on DioError catch (e) {
+      throw e.error;
+    }
+
   }
 
   /// restful post 操作
@@ -118,7 +124,7 @@ class HttpRequest {
         options: requestOptions,
         cancelToken: cancelToken ?? _cancelToken,
       );
-      return convert.jsonDecode(response.data);
+      return StringUtil.handleStringJson(response.data);
     } on DioError catch (e) {
       throw e.error;
     }
@@ -133,12 +139,16 @@ class HttpRequest {
   }) async {
     Options requestOptions = setAuthorizationHeader(options ?? Options());
 
-    Response response = await dio.post(
-      path,
-      data: FormData.fromMap(params!),
-      options: requestOptions,
-      cancelToken: cancelToken ?? _cancelToken,
-    );
-    return convert.jsonDecode(response.data);
+    try {
+      Response response = await dio.post(
+        path,
+        data: FormData.fromMap(params!),
+        options: requestOptions,
+        cancelToken: cancelToken ?? _cancelToken,
+      );
+      return StringUtil.handleStringJson(response.data);
+    }  on DioError catch (e) {
+      throw e.error;
+    }
   }
 }

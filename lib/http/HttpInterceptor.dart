@@ -1,7 +1,6 @@
-import 'dart:convert' as convert;
-
 import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:my_bqg_app/public.dart';
 import 'HttpException.dart';
 
 // 自定义拦截器
@@ -19,7 +18,7 @@ class HttpInterceptor extends Interceptor {
     Response response,
     ResponseInterceptorHandler handler,
   ) async {
-    Map<String, dynamic> data = convert.jsonDecode(response.data);
+    Map<String, dynamic> data = StringUtil.handleStringJson(response.data);
     if (data['status'] != 1) {
       HttpException httpException = HttpException(
         code: data['status'],

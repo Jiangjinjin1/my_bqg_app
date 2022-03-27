@@ -67,6 +67,7 @@ class BottomSheetModal extends StatelessWidget {
       case 'group':
         break;
       case 'catalog':
+        _openCatalog(context, item);
         break;
       case 'share':
         break;
@@ -108,6 +109,11 @@ class BottomSheetModal extends StatelessWidget {
             ],
           );
         });
+  }
+
+  // 打开目录
+  _openCatalog(context, MapString<String> item) {
+    Navigator.pushNamed(context, '/catalog', arguments: {'booId': bookItem.Id, 'mode': 'slide_top'});
   }
 
   @override

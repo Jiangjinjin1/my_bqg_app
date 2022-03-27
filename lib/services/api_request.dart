@@ -1,4 +1,5 @@
 import 'package:my_bqg_app/public.dart';
+import 'dart:convert' as convert;
 
 class ApiRequest {
 
@@ -37,6 +38,18 @@ class ApiRequest {
     );
     dynamic data = response['data'];
     BookDetailModel result = BookDetailModel.fromJson(data);
+    return result;
+  }
+
+  // 获取书籍详情
+  static Future getBookCatalog(int id) async {
+    int tmId = int.parse(id.toString().substring(0, 3)) + 1;
+    String path = '${HostConfig.infosxs_api_host}/BookFiles/Html/${tmId.toString()}/$id/index.html';
+    final response = await Http.get(
+      path,
+    );
+    dynamic data = response['data'];
+    BookCatalogModel result = BookCatalogModel.fromJson(data);
     return result;
   }
 

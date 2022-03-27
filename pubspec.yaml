@@ -46,6 +46,7 @@ dependencies:
   proste_indexed_stack: ^0.2.4
   # loading
   flutter_easyloading: ^3.0.3
+  grouped_list: ^4.2.0
 
 dev_dependencies:
   flutter_test:
